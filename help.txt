@@ -1,0 +1,39 @@
+| Package         | Purpose                                         |
+| --------------- | ----------------------------------------------- |
+| `mcp`           | Build the MCP Server, tools, resources, prompts |
+| `httpx`         | Call your .NET, Java, and Python APIs           |
+| `python-dotenv` | Read configuration from `.env`                  |
+| `sqlalchemy`    | SQL Server database access                      |
+| `pyodbc`        | SQL Server ODBC driver integration              |
+| `pymongo`       | MongoDB access                                  |
+| `pandas`        | Convenient CSV reading/writing                  |
+| `pydantic`      | Request/response validation and models          |
+
+
+Then install:
+
+python -m venv .venv
+
+Windows:
+
+.venv\Scripts\activate
+
+Then:
+
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+
+run mcp interface : mcp dev app\main.py  
+
+mcp dev app\main.py
+
+run without interface  
+python -m app.main   
+
+
+| Command               | Purpose                                  |
+| --------------------- | ---------------------------------------- |
+| `python -m app.main`  | Run your Python entry point              |
+| `mcp dev app\main.py` | Start MCP development/Inspector workflow |
+| `mcp run app\main.py` | Run the MCP server through MCP CLI       |
