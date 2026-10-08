@@ -1,11 +1,12 @@
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_categories(
     category_id: Optional[int] = None,
 ) -> Any:
@@ -18,15 +19,15 @@ async def get_categories(
 
     if category_id is not None:
 
-        return await client.get(
+        return  client.get(
             f"/Categories/{category_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Categories"
     )
 
-
+@mcp.tool()
 async def search_categories(
     search: str,
 ) -> Any:
@@ -34,7 +35,7 @@ async def search_categories(
     Search categories by name or description.
     """
 
-    categories = await client.get(
+    categories =  client.get(
         "/Categories"
     )
 

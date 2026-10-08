@@ -1,62 +1,13 @@
-# from typing import Any, Optional
-
-# from app.clients.northwind_client import NorthwindClient
-
-
-# client = NorthwindClient()
-
-
-# async def get_suppliers(
-#     supplier_id: Optional[int] = None,
-# ) -> Any:
-#     """
-#     Get suppliers.
-
-#     If supplier_id is provided, return one supplier.
-#     Otherwise return all suppliers.
-#     """
-
-#     if supplier_id is not None:
-
-#         return await client.get(
-#             f"/Suppliers/{supplier_id}"
-#         )
-
-#     return await client.get(
-#         "/Suppliers"
-#     )
-
-
-# async def search_suppliers(
-#     search: str,
-# ) -> Any:
-#     """
-#     Search suppliers.
-#     """
-
-#     suppliers = await client.get(
-#         "/Suppliers"
-#     )
-
-#     if not isinstance(suppliers, list):
-#         return suppliers
-
-#     search_lower = search.lower()
-
-#     return [
-#         supplier
-#         for supplier in suppliers
-#         if search_lower in str(supplier).lower()
-#     ]
 
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_shippers(
     shipper_id: Optional[int] = None,
 ) -> Any:
@@ -68,15 +19,15 @@ async def get_shippers(
     """
 
     if shipper_id is not None:
-        return await client.get(
+        return  client.get(
             f"/Shippers/{shipper_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Shippers"
     )
 
-
+@mcp.tool()
 async def search_shippers(
     search: str,
 ) -> Any:
@@ -84,7 +35,7 @@ async def search_shippers(
     Search shippers by name or any matching field.
     """
 
-    shippers = await client.get(
+    shippers =  client.get(
         "/Shippers"
     )
 

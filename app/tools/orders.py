@@ -1,11 +1,12 @@
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_orders(
     order_id: Optional[int] = None,
 ) -> Any:
@@ -18,15 +19,15 @@ async def get_orders(
 
     if order_id is not None:
 
-        return await client.get(
+        return  client.get(
             f"/Orders/{order_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Orders"
     )
 
-
+@mcp.tool()
 async def get_orders_by_customer(
     customer_id: str,
 ) -> Any:
@@ -34,7 +35,7 @@ async def get_orders_by_customer(
     Get orders for a specific customer.
     """
 
-    orders = await client.get(
+    orders =  client.get(
         "/Orders"
     )
 
@@ -50,7 +51,7 @@ async def get_orders_by_customer(
         )
     ]
 
-
+@mcp.tool()
 async def get_orders_by_employee(
     employee_id: int,
 ) -> Any:
@@ -58,7 +59,7 @@ async def get_orders_by_employee(
     Get orders handled by an employee.
     """
 
-    orders = await client.get(
+    orders =  client.get(
         "/Orders"
     )
 

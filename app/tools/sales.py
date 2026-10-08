@@ -1,17 +1,18 @@
 from typing import Any
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_sales_summary() -> dict[str, Any]:
     """
     Get a basic sales summary based on Northwind orders.
     """
 
-    orders = await client.get(
+    orders =  client.get(
         "/Orders"
     )
 
@@ -43,7 +44,7 @@ async def get_sales_summary() -> dict[str, Any]:
         "total_freight": total_freight,
     }
 
-
+@mcp.tool()
 async def get_customer_sales(
     customer_id: str,
 ) -> dict[str, Any]:
@@ -51,7 +52,7 @@ async def get_customer_sales(
     Get sales information for a customer.
     """
 
-    orders = await client.get(
+    orders =  client.get(
         "/Orders"
     )
 
@@ -86,7 +87,7 @@ async def get_customer_sales(
         "orders": customer_orders,
     }
 
-
+@mcp.tool()
 async def get_employee_sales(
     employee_id: int,
 ) -> dict[str, Any]:
@@ -94,7 +95,7 @@ async def get_employee_sales(
     Get sales information for an employee.
     """
 
-    orders = await client.get(
+    orders =  client.get(
         "/Orders"
     )
 

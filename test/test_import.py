@@ -1,6 +1,6 @@
 def test_server_import():
 
-    from app.server import mcp
+    from app.mcp_server import mcp
 
     assert mcp is not None
 

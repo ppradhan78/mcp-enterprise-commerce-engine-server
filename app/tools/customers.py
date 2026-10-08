@@ -1,13 +1,15 @@
-from typing import Any, Optional
+from typing import Any
 
+from app.mcp_server import mcp
 from app.clients.northwind_client import NorthwindClient
 
 
 client = NorthwindClient()
 
 
+@mcp.tool()
 async def get_customers(
-    customer_id: Optional[str] = None,
+    customer_id: str = "",
 ) -> Any:
     """
     Get Northwind customers.
@@ -17,15 +19,16 @@ async def get_customers(
     """
 
     if customer_id:
-        return await client.get(
+        return  client.get(
             f"/Customers/{customer_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Customers"
     )
 
 
+@mcp.tool()
 async def search_customers(
     search: str,
 ) -> Any:
@@ -33,7 +36,7 @@ async def search_customers(
     Search customers by customer name or related customer fields.
     """
 
-    customers = await client.get(
+    customers =  client.get(
         "/Customers"
     )
 

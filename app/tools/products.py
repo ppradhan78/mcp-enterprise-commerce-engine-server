@@ -1,11 +1,12 @@
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_products(
     product_id: Optional[int] = None,
 ) -> Any:
@@ -18,15 +19,16 @@ async def get_products(
 
     if product_id is not None:
 
-        return await client.get(
+        return  client.get(
             f"/Products/{product_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Products"
     )
 
 
+@mcp.tool()
 async def search_products(
     search: str,
 ) -> Any:
@@ -34,7 +36,7 @@ async def search_products(
     Search products.
     """
 
-    products = await client.get(
+    products =  client.get(
         "/Products"
     )
 
@@ -49,7 +51,7 @@ async def search_products(
         if search_lower in str(product).lower()
     ]
 
-
+@mcp.tool()
 async def get_products_by_category(
     category_id: int,
 ) -> Any:
@@ -57,7 +59,7 @@ async def get_products_by_category(
     Get products belonging to a category.
     """
 
-    products = await client.get(
+    products =  client.get(
         "/Products"
     )
 

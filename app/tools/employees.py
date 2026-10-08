@@ -1,11 +1,12 @@
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
-
+@mcp.tool()
 async def get_employees(
     employee_id: Optional[int] = None,
 ) -> Any:
@@ -18,15 +19,15 @@ async def get_employees(
 
     if employee_id is not None:
 
-        return await client.get(
+        return  client.get(
             f"/Employees/{employee_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Employees"
     )
 
-
+@mcp.tool()
 async def search_employees(
     search: str,
 ) -> Any:
@@ -34,7 +35,7 @@ async def search_employees(
     Search employees.
     """
 
-    employees = await client.get(
+    employees =  client.get(
         "/Employees"
     )
 

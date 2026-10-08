@@ -1,10 +1,12 @@
 from typing import Any, Optional
 
 from app.clients.northwind_client import NorthwindClient
+from app.mcp_server import mcp
 
 
 client = NorthwindClient()
 
+@mcp.tool()
 
 async def get_suppliers(
     supplier_id: Optional[int] = None,
@@ -18,15 +20,15 @@ async def get_suppliers(
 
     if supplier_id is not None:
 
-        return await client.get(
+        return  client.get(
             f"/Suppliers/{supplier_id}"
         )
 
-    return await client.get(
+    return  client.get(
         "/Suppliers"
     )
 
-
+@mcp.tool()
 async def search_suppliers(
     search: str,
 ) -> Any:
@@ -34,7 +36,7 @@ async def search_suppliers(
     Search suppliers.
     """
 
-    suppliers = await client.get(
+    suppliers =  client.get(
         "/Suppliers"
     )
 
