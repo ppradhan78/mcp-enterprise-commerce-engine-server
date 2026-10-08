@@ -19,11 +19,11 @@ async def get_customers(
     """
 
     if customer_id:
-        return  client.get(
+        return  await client.get(
             f"/Customers/{customer_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Customers"
     )
 
@@ -36,7 +36,7 @@ async def search_customers(
     Search customers by customer name or related customer fields.
     """
 
-    customers =  client.get(
+    customers =  await client.get(
         "/Customers"
     )
 

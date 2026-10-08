@@ -12,7 +12,7 @@ async def get_sales_summary() -> dict[str, Any]:
     Get a basic sales summary based on Northwind orders.
     """
 
-    orders =  client.get(
+    orders =  await client.get(
         "/Orders"
     )
 
@@ -52,7 +52,7 @@ async def get_customer_sales(
     Get sales information for a customer.
     """
 
-    orders =  client.get(
+    orders =  await client.get(
         "/Orders"
     )
 
@@ -95,7 +95,7 @@ async def get_employee_sales(
     Get sales information for an employee.
     """
 
-    orders =  client.get(
+    orders =  await client.get(
         "/Orders"
     )
 

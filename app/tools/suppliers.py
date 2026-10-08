@@ -20,11 +20,11 @@ async def get_suppliers(
 
     if supplier_id is not None:
 
-        return  client.get(
+        return  await client.get(
             f"/Suppliers/{supplier_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Suppliers"
     )
 
@@ -36,7 +36,7 @@ async def search_suppliers(
     Search suppliers.
     """
 
-    suppliers =  client.get(
+    suppliers =  await client.get(
         "/Suppliers"
     )
 

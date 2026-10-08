@@ -19,11 +19,11 @@ async def get_products(
 
     if product_id is not None:
 
-        return  client.get(
+        return  await client.get(
             f"/Products/{product_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Products"
     )
 
@@ -36,7 +36,7 @@ async def search_products(
     Search products.
     """
 
-    products =  client.get(
+    products =  await client.get(
         "/Products"
     )
 
@@ -59,7 +59,7 @@ async def get_products_by_category(
     Get products belonging to a category.
     """
 
-    products =  client.get(
+    products =  await client.get(
         "/Products"
     )
 

@@ -19,11 +19,11 @@ async def get_shippers(
     """
 
     if shipper_id is not None:
-        return  client.get(
+        return  await client.get(
             f"/Shippers/{shipper_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Shippers"
     )
 
@@ -35,7 +35,7 @@ async def search_shippers(
     Search shippers by name or any matching field.
     """
 
-    shippers =  client.get(
+    shippers =  await client.get(
         "/Shippers"
     )
 

@@ -19,11 +19,11 @@ async def get_employees(
 
     if employee_id is not None:
 
-        return  client.get(
+        return  await client.get(
             f"/Employees/{employee_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Employees"
     )
 
@@ -35,7 +35,7 @@ async def search_employees(
     Search employees.
     """
 
-    employees =  client.get(
+    employees =  await client.get(
         "/Employees"
     )
 

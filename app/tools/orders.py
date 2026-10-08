@@ -19,11 +19,11 @@ async def get_orders(
 
     if order_id is not None:
 
-        return  client.get(
+        return  await client.get(
             f"/Orders/{order_id}"
         )
 
-    return  client.get(
+    return  await client.get(
         "/Orders"
     )
 
@@ -35,7 +35,7 @@ async def get_orders_by_customer(
     Get orders for a specific customer.
     """
 
-    orders =  client.get(
+    orders =  await client.get(
         "/Orders"
     )
 
@@ -59,7 +59,7 @@ async def get_orders_by_employee(
     Get orders handled by an employee.
     """
 
-    orders =  client.get(
+    orders =  await client.get(
         "/Orders"
     )
 
